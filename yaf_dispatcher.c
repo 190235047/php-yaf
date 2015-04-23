@@ -112,7 +112,7 @@ yaf_dispatcher_t * yaf_dispatcher_instance(yaf_dispatcher_t *this_ptr TSRMLS_DC)
 	zval			*plugins;
 	yaf_router_t	 	*router;
 	yaf_dispatcher_t 	*instance;
-
+        //读取静态属性
 	instance = zend_read_static_property(yaf_dispatcher_ce, ZEND_STRL(YAF_DISPATCHER_PROPERTY_NAME_INSTANCE), 1 TSRMLS_CC);
 
 	if (IS_OBJECT == Z_TYPE_P(instance)

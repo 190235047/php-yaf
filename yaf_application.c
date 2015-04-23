@@ -369,7 +369,7 @@ PHP_METHOD(yaf_application, __construct) {
 		yaf_trigger_error(YAF_ERR_STARTUP_FAILED TSRMLS_CC, "Initialization of request failed");
 		RETURN_FALSE;
 	}
-
+        //??初始化一些静态属性？？？
 	zdispatcher = yaf_dispatcher_instance(NULL TSRMLS_CC);
 	if (NULL == zdispatcher
 			|| Z_TYPE_P(zdispatcher) != IS_OBJECT
