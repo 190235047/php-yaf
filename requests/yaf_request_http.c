@@ -42,21 +42,21 @@ yaf_request_t * yaf_request_http_instance(yaf_request_t *this_ptr, char *request
 	if (this_ptr) {
 		instance = this_ptr;
 	} else {
-		MAKE_STD_ZVAL(instance);
-		object_init_ex(instance, yaf_request_http_ce);
+		MAKE_STD_ZVAL(instance);//创建变量
+		object_init_ex(instance, yaf_request_http_ce);//初始化对象
 	}
 
 	MAKE_STD_ZVAL(method);
-	if (SG(request_info).request_method) {
-		ZVAL_STRING(method, (char *)SG(request_info).request_method, 1);
+	if (SG(request_info).request_method) {//读取资源信息
+		ZVAL_STRING(method, (char *)SG(request_info).request_method, 1);//给method赋值
 	} else if (strncasecmp(sapi_module.name, "cli", 3)) {
 		ZVAL_STRING(method, "Unknow", 1);
 	} else {
 		ZVAL_STRING(method, "Cli", 1);
 	}
-
+        //跟新instance对象属性值
 	zend_update_property(yaf_request_http_ce, instance, ZEND_STRL(YAF_REQUEST_PROPERTY_NAME_METHOD), method TSRMLS_CC);
-	zval_ptr_dtor(&method);
+	zval_ptr_dtor(&method);//释放method
 
 	if (request_uri) {
 		MAKE_STD_ZVAL(settled_uri);

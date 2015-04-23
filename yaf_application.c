@@ -342,7 +342,7 @@ PHP_METHOD(yaf_application, __construct) {
 	if (!section || Z_TYPE_P(section) != IS_STRING || !Z_STRLEN_P(section)) {
 		MAKE_STD_ZVAL(section);//创建一个ZVAL变量
 		ZVAL_STRING(section, YAF_G(environ), 0);//给section赋值 YAF_G(environ)
-		zconfig = yaf_config_instance(NULL, config, section TSRMLS_CC);
+		zconfig = yaf_config_instance(NULL, config, section TSRMLS_CC);//读取配置文件、以后进去看详细怎么读取
 		efree(section);
 	} else {
 		zconfig = yaf_config_instance(NULL, config, section TSRMLS_CC);
@@ -357,7 +357,7 @@ PHP_METHOD(yaf_application, __construct) {
 		yaf_trigger_error(YAF_ERR_STARTUP_FAILED TSRMLS_CC, "Initialization of application config failed");
 		RETURN_FALSE;
 	}
-
+        //获取请求url&&参数
 	request = yaf_request_instance(NULL, YAF_G(base_uri) TSRMLS_CC);
 	if (YAF_G(base_uri)) {
 		efree(YAF_G(base_uri));
