@@ -340,8 +340,8 @@ PHP_METHOD(yaf_application, __construct) {
 	}
 
 	if (!section || Z_TYPE_P(section) != IS_STRING || !Z_STRLEN_P(section)) {
-		MAKE_STD_ZVAL(section);
-		ZVAL_STRING(section, YAF_G(environ), 0);
+		MAKE_STD_ZVAL(section);//创建一个ZVAL变量
+		ZVAL_STRING(section, YAF_G(environ), 0);//给section赋值 YAF_G(environ) 展开会是 str,len
 		zconfig = yaf_config_instance(NULL, config, section TSRMLS_CC);
 		efree(section);
 	} else {
