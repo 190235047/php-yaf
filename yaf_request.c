@@ -87,7 +87,7 @@ ZEND_END_ARG_INFO()
 /** {{{ yaf_request_t * yaf_request_instance(zval *this_ptr, char *other TSRMLS_DC)
 */
 yaf_request_t * yaf_request_instance(yaf_request_t *this_ptr, char *other TSRMLS_DC) {
-	yaf_request_t *instance = yaf_request_http_instance(this_ptr, NULL, other TSRMLS_CC);
+	yaf_request_t *instance = yaf_request_http_instance(this_ptr, NULL, other TSRMLS_CC);//貌似获取url???
 	return instance;
 }
 /* }}} */

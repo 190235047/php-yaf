@@ -357,7 +357,7 @@ PHP_METHOD(yaf_application, __construct) {
 		yaf_trigger_error(YAF_ERR_STARTUP_FAILED TSRMLS_CC, "Initialization of application config failed");
 		RETURN_FALSE;
 	}
-        //获取请求url&&参数
+        //获取请求url&&参数 、获取 GET或POST方式赋值给 类的变量
 	request = yaf_request_instance(NULL, YAF_G(base_uri) TSRMLS_CC);
 	if (YAF_G(base_uri)) {
 		efree(YAF_G(base_uri));

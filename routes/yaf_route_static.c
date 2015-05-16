@@ -55,7 +55,7 @@ int yaf_route_pathinfo_route(yaf_request_t *request, char *req_uri, int req_uri_
 				|| (req_uri_len == 1 && *req_uri == '/')) {
 			break;
 		}
-
+                //这里也可以把 uri 和 p打印出来看看
 		uri = req_uri;
 		s = p = uri;
 
