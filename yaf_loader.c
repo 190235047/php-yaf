@@ -345,7 +345,7 @@ int yaf_loader_import(char *path, int len, int use_path TSRMLS_DC) {
 	file_handle.opened_path = NULL;
 	file_handle.handle.fp = NULL;
 
-	op_array = zend_compile_file(&file_handle, ZEND_INCLUDE TSRMLS_CC);
+	op_array = zend_compile_file(&file_handle, ZEND_INCLUDE TSRMLS_CC);//zend_compile_file 编译php文件
 
 	if (op_array && file_handle.handle.stream.handle) {
 		int dummy = 1;
@@ -371,7 +371,7 @@ int yaf_loader_import(char *path, int len, int use_path TSRMLS_DC) {
 			zend_rebuild_symbol_table(TSRMLS_C);
 		}
 #endif
-		zend_execute(op_array TSRMLS_CC);
+		zend_execute(op_array TSRMLS_CC);//执行
 
 		destroy_op_array(op_array TSRMLS_CC);
 		efree(op_array);

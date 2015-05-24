@@ -137,7 +137,7 @@ yaf_request_t * yaf_request_http_instance(yaf_request_t *this_ptr, char *request
 		} while (0);
 	}
         //这里可以把settled_uri打印出来看看
-	if (settled_uri) {
+	if (settled_uri) {//PHPWRITE(Z_STRVAL(*settled_uri), Z_STRLEN(*settled_uri));
 		char *p = Z_STRVAL_P(settled_uri);
 
 		while (*p == '/' && *(p + 1) == '/') {
